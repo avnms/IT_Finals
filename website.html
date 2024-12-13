@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marasigan, Arvin Christlan B.</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f3e5, #e8e2d0);
+            color: #212529;
+        }
+
+        header {
+            background: linear-gradient(90deg, #2c2f33, #3a3d42);
+            color: #ffffff;
+            padding: 2rem;
+            text-align: left;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .bio-section {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap; 
+        }
+
+        .bio-section img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+            flex-shrink: 0;
+        }
+
+        .bio-section h2 {
+            font-size: 1.8rem;
+            color: #2d3b3b;
+        }
+
+        .bio-section p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .sdg-section {
+            background: linear-gradient(135deg, #f0bb78, #f4d2a0);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+            margin-bottom: 3rem;
+        }
+
+        .sdg-section h2 {
+            color: #495057;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-around;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .button-container button {
+            background: linear-gradient(135deg, #543a14, #6a4b1a);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            flex: 1;
+            max-width: 200px; 
+        }
+
+        .button-container button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            width: 90%;
+            max-width: 500px;
+        }
+
+        .popup h3 {
+            margin: 0 0 1rem;
+            color: #343a40;
+        }
+
+        .popup p {
+            color: #495057;
+            line-height: 1.5;
+        }
+
+        .popup .close-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            background: #dc3545;
+            color: #ffffff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .popup .close-btn:hover {
+            background-color: #c82333;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        footer {
+            background: linear-gradient(90deg, #2c2f33, #3a3d42);
+            color: #ffffff;
+            padding: 1.5rem 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+            margin-top: 3rem;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        footer a {
+            color: #00aaff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .bio-section h2 {
+                font-size: 1.6rem;
+            }
+
+            .bio-section p {
+                font-size: 1rem;
+            }
+
+            .sdg-section h2 {
+                font-size: 1.6rem;
+            }
+
+            .button-container button {
+                font-size: 1rem;
+                padding: 0.8rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .bio-section {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .bio-section img {
+                width: 120px;
+                height: 120px;
+            }
+
+            .bio-section h2 {
+                font-size: 1.4rem;
+            }
+
+            .bio-section p {
+                font-size: 0.9rem;
+            }
+
+            .button-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .button-container button {
+                width: 100%;
+                max-width: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Marasigan, Arvin Christlan B.</h1>
+    </header>
+
+    <div class="container">
+        <section class="bio-section">
+            <img src="IDPic.JPG" alt="IDPic">
+            <div>
+                <h2>About Me:</h2>
+                <p>Greetings, everyone! My name is Arvin Marasigan, a Bachelor of Science in Information Technology (BSIT) student that is passionate about learning. Despite being new to coding, my deep passion for fearless learning and positive mindset for fundamentals separates me from the pack. My technical skills and ability to solve problems is driven by a desire to learn and I embrace challenges as a chance to grow. Overall, I am determined to build a solid foundation in programming and thrive in the dynamic field of IT.</p>
+            </div>
+        </section>
+
+        <section class="sdg-section">
+            <h2>Selected SDG: Good Health and Well-being (SDG3)</h2>
+            <p>Healthy lives and well-being for all ages are the focus of Sustainable Development Goal 3. It addresses global health risks, access to health care, communicable and non-communicable diseases, maternal and child health. Achieving this goal is fundamental to designing prosperous societies, curbing inequalities and enhancing global resilience.
+
+            </p>
+        </section>
+
+        <div class="button-container">
+            <button onclick="showPopup('skills')">Skills and Expertise</button>
+            <button onclick="showPopup('projects')">Project Showcase</button>
+            <button onclick="showPopup('sdg')">SDG Feature Section</button>
+            <button onclick="showPopup('contact')">Contact Information</button>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <div class="popup" id="skills">
+        <h3>Skills and Expertise</h3>
+        <div class="skills-card">
+            <h4>Technical Skills</h4>
+            <ul>
+                <li>Basic understanding of Information Technology principles</li>
+                <li>Strong analytical and problem-solving mindset</li>
+                <li>Enthusiastic and quick learner with a growth-oriented approach</li>
+            </ul>
+            <h4>Familiar with the basics of:</h4>
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>Python</li>
+            </ul>
+        </div>
+        <button class="close-btn" onclick="hidePopup()">Close</button>
+    </div>
+    
+    <style>
+        .skills-card {
+            background: #f5f3e5;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: left;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.2rem;
+            color: #495057;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+    
+        .skills-card h4 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: #495057;
+        }
+    
+        .skills-card ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-bottom: 1.5rem;
+        }
+    
+        .skills-card ul li {
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+            color: #555;
+    
+        }
+    </style>
+
+    <div class="popup" id="projects">
+        <h3>Project Showcase</h3>
+        <div class="projects-list">
+            <div class="project-item">
+                <a href="https://github.com/avnms/Calculator-Python-" target="_blank">
+                    <div class="project-card">
+                        <h4>Calculator</h4>
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                </a>
+            </div>
+            <div class="project-item">
+                <a href="https://github.com/avnms/Tictactoe-Python" target="_blank">
+                    <div class="project-card">
+                        <h4>Tic Tac Toe</h4>
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <p>This showcases two simple projects that I've done before, a fully functional calculator and a Tic-Tac-Toe game, both developed entirely in Python.</p>
+        <button class="close-btn" onclick="hidePopup()">Close</button>
+    </div>
+    
+    <style>
+        .projects-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+    
+        .project-item {
+            display: flex;
+            justify-content: center;
+        }
+    
+        .project-card {
+            background: #f5f3e5;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 150px;
+        }
+    
+        .project-card h4 {
+            font-size: 1.5rem;
+            color: #495057;
+            margin-bottom: 1rem;
+        }
+    
+        .project-card i {
+            font-size: 2.5rem;
+            color: #6c757d;
+        }
+    
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+    
+        .project-item a {
+            text-decoration: none;
+        }
+    </style>
+
+<div class="popup" id="sdg">
+    <h3>SDG Feature Section</h3>
+    <div class="sdg-card">
+        <p>SDG 3 ensures healthy lives and promotes well-being for all ages. It is a foundation of sustainable development because health bears on economic growth, social equity, and the quality of life in general. Health is paramount, no one should be left behind. Moreover, it aims to create a world where everyone has the opportunity to live a healthy and fulfilling life. Achieving this goal is crucial for empowering communities and building a sustainable future.</p>
+        <p>As BSIT students, we can also do our best to develop skills and develop projects that are relevant to SDG 3 and use the power of technology to combat the health challenges. For example, I can write web applications for teaching the communities about healthy practices, develop tools for health records processing, and develop apps for positive and mental wellness. Innovative technology for accessibility can also support and promote inclusivity in access to healthcare information and services. I can meaningfully contribute in promoting good health and the well-being of communities by leveraging IT to innovate and improve healthcare systems.</p>
+    </div>
+    <button class="close-btn" onclick="hidePopup()">Close</button>
+</div>
+
+<style>
+    .sdg-card {
+        background: #f5f3e5;
+        border-radius: 8px;
+        padding: 2rem;
+        text-align: left;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        line-height: 1.6;
+        font-size: 1.2rem;
+        color: #495057;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .sdg-card p {
+        margin-bottom: 1.5rem;
+    }
+
+    .sdg-card h3 {
+        font-size: 2rem;
+        color: #495057;
+        margin-bottom: 1.5rem;
+    
+    }
+</style>
+
+    <div class="popup" id="contact">
+        <h3>Contact Information</h3>
+        <div class="contact-info">
+            <div class="contact-card">
+                <h4>Email</h4>
+                <p>arvinbm15@gmail.com</a></p>
+            </div>
+            <div class="contact-card">
+                <h4>Facebook</h4>
+                <p><a href="https://www.facebook.com/arvin.marasigan.15" target="_blank">Arvin Marasigan</a></p>
+            </div>
+            <div class="contact-card">
+                <h4>GitHub</h4>
+                <p><a href="https://github.com/avnms" target="_blank">avnms</a></p>
+            </div>
+        </div>
+        <button class="close-btn" onclick="hidePopup()">Close</button>
+    </div>
+    
+    <style>
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+    
+        .contact-card {
+            background: #f5f3e5;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+    
+        .contact-card h4 {
+            font-size: 1.5rem;
+            color: #495057;
+            margin-bottom: 1rem;
+        }
+    
+        .contact-card p {
+            font-size: 1.2rem;
+            color: #007bff;
+        }
+    
+        .contact-card a {
+            color: #007bff;
+            text-decoration: none;
+        }
+    
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+    
+        .contact-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+
+    <footer>
+        <p>&copy; 2024 Arvin Christlan B. Marasigan. All rights reserved.</p>
+        <p>Disclaimer: The content on this site is for informational purposes only.</p>
+    </footer>
+
+    <script>
+        function showPopup(id) {
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById(id).style.display = 'block';
+        }
+
+        function hidePopup() {
+            document.getElementById('overlay').style.display = 'none';
+            document.querySelectorAll('.popup').forEach(popup => {
+                popup.style.display = 'none';
+            });
+        }
+    </script>
+</body>
+</html>
